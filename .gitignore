@@ -10,7 +10,7 @@
 
 # production
 /build
-/public
+/public/build
 /public/routes
 /public/_shared
 /dist
