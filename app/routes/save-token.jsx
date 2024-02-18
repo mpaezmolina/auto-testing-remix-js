@@ -21,7 +21,7 @@ export const loader = async ({ request }) => {
       console.log("long lived token:  " + response.data.access_token);
     })
     .catch((error) => {
-      //console.error("Error fetching data:", error);
+      console.error("Error fetching data:", error);
     });
 
   return json({
