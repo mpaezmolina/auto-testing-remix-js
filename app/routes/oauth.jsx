@@ -13,7 +13,6 @@ function Oauth() {
   // Parse the hash fragment to get the access_token parameter
   const urlParams = new URLSearchParams(hash);
   const accessToken = urlParams.get("#access_token");
-  console.log("ff " + JSON.stringify(accessToken));
 
   useEffect(() => {
     navigate("/save-token?access_token=" + accessToken);
