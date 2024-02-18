@@ -10,6 +10,9 @@
 
 # production
 /build
+/public
+/public/routes
+/public/_shared
 /dist
 
 # misc
@@ -27,3 +30,4 @@ yarn-error.log*
 .env
 .env.build
 .vercel
+.cache
