@@ -1,5 +1,3 @@
-import { Link } from "@remix-run/react";
-
 function Index() {
   return (
     <div>
