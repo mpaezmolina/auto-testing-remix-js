@@ -36,3 +36,5 @@ Make sure to deploy the output of `remix build`
 
 - `build/`
 - `public/build/`
+
+gcloud compute firewall-rules create allow-db-access --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:3306--source-ranges=0.0.0.0/0 --target-tags=db
