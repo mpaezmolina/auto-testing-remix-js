@@ -56,5 +56,6 @@ model Post {
   text                            String
   imageUrl                        String
   postDate                        DateTime                     @default(now())
+  sent                            Boolean                      @default(false)
   createdAt                       DateTime                     @default(now())
 }
