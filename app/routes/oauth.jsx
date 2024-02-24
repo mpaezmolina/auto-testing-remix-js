@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "@remix-run/react";
+import { useLocation } from "@remix-run/react";
 
 function Oauth() {
   const location = useLocation();
@@ -8,15 +8,13 @@ function Oauth() {
   const urlParams = new URLSearchParams(hash);
   const accessToken = urlParams.get("#access_token");
 
-  console.log("Start Oauth " + accessToken);
-
   useEffect(() => {
-    async function fetchData() {
+    async function saveToken() {
       console.log("Fetch");
       await fetch("save-token?access_token=" + accessToken);
       window.close();
     }
-    fetchData();
+    saveToken();
   }, []);
 
   return <div></div>;
