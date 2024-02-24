@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from "@remix-run/react";
 
 function Oauth() {
   const location = useLocation();
-  //  const navigate = useNavigate();
 
   const hash = location.hash;
   const urlParams = new URLSearchParams(hash);
@@ -20,11 +19,7 @@ function Oauth() {
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   navigate("/api/save-token?access_token=" + accessToken);
-  // }, []);
-
-  return <div>Oauth</div>;
+  return <div></div>;
 }
 
 export default Oauth;

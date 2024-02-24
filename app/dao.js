@@ -51,27 +51,22 @@ export async function saveLongLivedToken(
 }
 
 export async function saveLongLivedTokenToLatest(longLivedToken) {
-  try {
-    const latestRow = await prisma.installations_SocialNetworks.findFirst({
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
+  const latestRow = await prisma.installations_SocialNetworks.findFirst({
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
 
-    if (!latestRow) {
-      throw new Error("No rows found.");
-    }
-
-    const installations_SocialNetwork = await prisma.installations_SocialNetworks.update({
-      where: {
-        id: latestRow.id,
-      },
-      data: { token: longLivedToken, createdAt: new Date().toISOString() },
-    });
-
-    return installations_SocialNetwork;
-  } catch (error) {
-    console.error("Error updating latest row:", error);
-    throw error;
+  if (!latestRow) {
+    throw new Error("No rows found.");
   }
+
+  const installations_SocialNetwork = await prisma.installations_SocialNetworks.update({
+    where: {
+      id: latestRow.id,
+    },
+    data: { token: longLivedToken, createdAt: new Date().toISOString() },
+  });
+
+  return installations_SocialNetwork;
 }
