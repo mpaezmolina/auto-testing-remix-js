@@ -70,3 +70,37 @@ export async function saveLongLivedTokenToLatest(longLivedToken) {
 
   return installations_SocialNetwork;
 }
+
+export async function createPost(aPost) {
+  const post = await prisma.post.create({
+    data: aPost,
+  });
+
+  return post;
+}
+
+export async function getPosts() {
+  const posts = await prisma.post.findMany({
+    where: {
+      sent: false,
+    },
+    include: {
+      installations_SocialNetworks: true,
+    },
+  });
+
+  return posts;
+}
+
+export async function markAllPostsAsSent() {
+  const updatePosts = await prisma.post.updateMany({
+    where: {
+      sent: false,
+    },
+    data: {
+      sent: true,
+    },
+  });
+
+  return updatePosts;
+}
