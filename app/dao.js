@@ -72,6 +72,21 @@ export async function saveLongLivedTokenToLatest(longLivedToken) {
 }
 
 export async function createPost(aPost) {
+  if (!aPost.installations_SocialNetworks_id && aPost.installations_id && aPost.socialNetworks_id) {
+    const installations_SocialNetwork = await prisma.Installations_SocialNetworks.findUnique({
+      where: {
+        likeId: {
+          installations_id: parseInt(aPost.installations_id),
+          socialNetworks_id: parseInt(aPost.socialNetworks_id),
+        },
+      },
+    });
+
+    delete aPost.installations_id;
+    delete aPost.socialNetworks_id;
+    aPost.installations_SocialNetworks_id = installations_SocialNetwork.id;
+  }
+
   const post = await prisma.post.create({
     data: aPost,
   });
